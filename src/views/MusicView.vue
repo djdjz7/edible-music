@@ -17,7 +17,7 @@ const titleSecRef = ref<HTMLDivElement>();
 let initialTitleHeight = -1;
 onMounted(async () => {
     try {
-        const data = (await axios.get<Music>(`/public/data/entries/${id}/index.json`)).data;
+        const data = (await axios.get<Music>(`/data/entries/${id}/index.json`)).data;
         if (data.title == undefined) {
             throw new Error("未能获取歌曲信息");
         }
