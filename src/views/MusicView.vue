@@ -67,7 +67,7 @@ const handleScroll = (e: Event) => {
         <div id="main-grid" h-full relative>
             <div flex="~" text-gray-5 font-semibold tracking-wide>
                 <div flex="~ items-center gap-2 grow">
-                    <span> 吃人协会的音乐推荐 </span>
+                    <a href="/" text-unset decoration-underline underline-offset-4><span> 吃人协会的音乐推荐 </span></a>
                     <span> · </span>
                     <span> {{ music?.vol }} </span>
                 </div>
@@ -81,8 +81,8 @@ const handleScroll = (e: Event) => {
             </div>
             <div id="cover-grid" h-full overflow-auto p-t-16 class="-m-l-24 p-l-24">
                 <div h-78 w-76 relative>
-                    <img :src="music?.cover" object-cover absolute w-full top-2 blur-xl>
-                    <img :src="music?.cover" object-cover absolute w-full rounded-xl>
+                    <img :src="`/data/entries/${id}/${music?.cover}`" object-cover absolute w-full top-2 blur-xl>
+                    <img :src="`/data/entries/${id}/${music?.cover}`" object-cover absolute w-full rounded-xl>
                 </div>
                 <div h-full w-full p-l-24 box-border overflow-auto class="scroll-mask" ref="scrollRef"
                     @scroll="handleScroll">
@@ -99,7 +99,8 @@ const handleScroll = (e: Event) => {
             </div>
         </div>
         <div flex="~ items-center gap-24" p-b-32 m-t-24>
-            <a :href="music?.apple_music_link"><img w-52 src="/apple-music-badge.svg" target="blank"></a>
+            <a :href="music?.apple_music_link" target="_blank"><img w-52 src="/apple-music-badge.svg"
+                    target="blank"></a>
             <div flex="~ col gap-2">
                 <ExternalLink content="QQ 音乐" :href="music?.qq_music_link" />
                 <ExternalLink content="网易云音乐" :href="music?.netease_music_link" />

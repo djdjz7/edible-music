@@ -13,7 +13,7 @@ const entries = ref<ListEntry[]>(data);
     <div grid="~ cols-1 gap-y-4 md:cols-2 lg:cols-3" self-stretch m-t-12>
       <a v-for="entry in entries" :key="entry.vol" flex="~ items-center" :href="entry.href" relative decoration-none
         class="group">
-        <div relative w-24 h-25>
+        <div relative min-w-24 w-24 h-25>
           <img absolute top-1 blur-md group-hover:blur-xl h-24 w-24 transition-filter duration-200 :src="entry.cover">
           <img absolute h-24 w-24 :src="entry.cover">
         </div>

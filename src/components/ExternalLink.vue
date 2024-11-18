@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-    <a underline-offset-4 text-black font-semibold inline-flex items-center target="blank" :href="href">
+    <a underline-offset-4 text-black font-semibold inline-flex items-center target="_blank" :href="href">
         <span>{{ content }}</span>
         <ArrowTopRightOnSquareIcon class="h-4" />
     </a>
