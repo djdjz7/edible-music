@@ -9,7 +9,7 @@ export default function musicEntryGeneator(): PluginOption {
   const resolvedVirtualModuleId = '\0' + virtualModuleId
 
   return {
-    name: 'music-entry-generator', // required, will show up in warnings and errors
+    name: 'music-entry-generator',
     resolveId(id) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId
@@ -31,12 +31,15 @@ export default function musicEntryGeneator(): PluginOption {
             entries.push({
               vol: data.vol,
               title: data.title,
-              cover: data.cover,
+              cover: `/data/entries/${x}/${data.cover}`,
               date: data.date,
               artist: data.artist,
               album: data.album,
               theme_color: data.theme_color,
               href: `/music/${x}`,
+            })
+            entries.sort((a, b) => {
+              return Date.parse(a.date) - Date.parse(b.date)
             })
           } catch (err) {
             console.error(err)
@@ -44,6 +47,11 @@ export default function musicEntryGeneator(): PluginOption {
         })
         console.log('successfully transformed music entries.')
         return JSON.stringify(entries)
+      }
+    },
+    handleHotUpdate({ server, file }) {
+      if (file.includes('public/data/entries')) {
+        server.restart()
       }
     },
   }
