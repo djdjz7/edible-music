@@ -119,6 +119,16 @@ const lyrics = lyricsStr
   .map(line => line.trim())
   .filter(line => line.length > 0)
 
+const lyrics_excerpt_start_time = await input({
+  message: 'Lyrics excerpt start time (mm:ss):',
+  default: '0',
+})
+
+const lyrics_excerpt_end_time = await input({
+  message: 'Lyrics excerpt end time (mm:ss):',
+  default: '0',
+})
+
 const music: Music = {
   vol,
   title,
@@ -135,6 +145,8 @@ const music: Music = {
   intro,
   intro_author,
   lyrics,
+  lyrics_excerpt_start_time,
+  lyrics_excerpt_end_time,
 }
 
 const jsonPath = path.join(thisDir, 'index.json')
