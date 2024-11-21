@@ -73,7 +73,7 @@ if (coverResponse.ok) {
   })
   cover = `cover.${fileExt}`
   const coverData = await coverResponse.arrayBuffer()
-  await fs.writeFile(path.join(thisDir, cover), coverData)
+  await fs.writeFile(path.join(thisDir, cover), Buffer.from(coverData))
 }
 
 const theme_color = await input({
@@ -106,6 +106,10 @@ const intro = (
   })
 ).trim()
 
+const intro_author = await input({
+  message: 'Intro author:',
+})
+
 const lyricsStr = await editor({
   message: 'Lyrics:',
 })
@@ -129,6 +133,7 @@ const music: Music = {
   netease_music_link,
   wechat_link,
   intro,
+  intro_author,
   lyrics,
 }
 
