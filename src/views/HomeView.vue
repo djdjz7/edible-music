@@ -14,7 +14,7 @@ const entries = ref<ListEntry[]>(data);
       <a v-for="entry in entries" :key="entry.vol" flex="~ items-center" :href="entry.href" relative decoration-none
         class="group">
         <div relative min-w-24 w-24 h-25>
-          <img absolute top-1 blur-md group-hover:blur-xl h-24 w-24 transition-filter duration-200 :src="entry.cover">
+          <img absolute top-.5 blur-sm group-hover:blur-md h-24 w-24 transition-filter duration-200 :src="entry.cover">
           <img absolute h-24 w-24 :src="entry.cover">
         </div>
         <div m-l-8 flex="~ col" text-black>

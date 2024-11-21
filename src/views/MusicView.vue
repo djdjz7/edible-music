@@ -91,7 +91,7 @@ const handleScroll = (e: Event) => {
                             {{ music?.intro }}</p>
                     </div>
                     <div p-t-4 p-b-32 min-h-full box-border :style="`color: ${music?.text_theme_color}`" font-semibold
-                        text-3xl v-if="music?.lyrics && music?.lyrics.length > 0" flex="~ col gap-2" ref="lyricsRef">
+                        text-3xl v-if="music?.lyrics && music?.lyrics.length > 0" flex="~ col gap-4" ref="lyricsRef">
                         <span text-wrap whitespace-pre v-for="line in music?.lyrics" :key="line">{{ line }}</span>
                         <ChevronDoubleDownIcon class="h-6 m-t-4" />
                     </div>
@@ -99,8 +99,9 @@ const handleScroll = (e: Event) => {
             </div>
         </div>
         <div flex="~ items-center gap-24" p-b-32 m-t-24>
-            <a :href="music?.apple_music_link" target="_blank"><img w-52 src="/apple-music-badge.svg" target="blank"
-                    v-if="music?.apple_music_link"></a>
+            <a :href="music?.apple_music_link" target="_blank" v-if="music?.apple_music_link">
+                <img w-52 src="/apple-music-badge.svg" target="blank">
+            </a>
             <div flex="~ col gap-2">
                 <ExternalLink content="QQ 音乐" v-if="music?.qq_music_link" :href="music?.qq_music_link" />
                 <ExternalLink content="网易云音乐" v-if="music?.netease_music_link" :href="music?.netease_music_link" />
