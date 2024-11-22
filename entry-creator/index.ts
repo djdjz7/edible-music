@@ -121,12 +121,10 @@ const lyrics = lyricsStr
 
 const lyrics_excerpt_start_time = await input({
   message: 'Lyrics excerpt start time (mm:ss):',
-  default: '0',
 })
 
 const lyrics_excerpt_end_time = await input({
   message: 'Lyrics excerpt end time (mm:ss):',
-  default: '0',
 })
 
 const music: Music = {
