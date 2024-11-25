@@ -51,7 +51,10 @@ export default function musicEntryGeneator(): PluginOption {
     },
     handleHotUpdate({ server, file }) {
       if (file.includes('public/data/entries')) {
-        server.restart()
+        const thisModule = server.moduleGraph.getModuleById(
+          resolvedVirtualModuleId,
+        )
+        if (thisModule) return [thisModule]
       }
     },
   }
