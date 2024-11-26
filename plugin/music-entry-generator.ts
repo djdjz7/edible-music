@@ -21,10 +21,9 @@ export default function musicEntryGeneator(): PluginOption {
         const base = path.join(process.cwd(), './public/data/entries')
         const dirs = fs.readdirSync(base)
         const entries: ListEntry[] = []
-        for (const x of dirs) {
+        dirs.forEach(x => {
           try {
             const filepath = path.join(base, x, 'index.json')
-            this.addWatchFile(filepath)
             const content = fs.readFileSync(filepath, {
               encoding: 'utf-8',
             })
@@ -45,18 +44,18 @@ export default function musicEntryGeneator(): PluginOption {
           } catch (err) {
             console.error(err)
           }
-        }
+        })
         console.log('successfully transformed music entries.')
         return JSON.stringify(entries)
       }
     },
-    // handleHotUpdate({ server, file }) {
-    //   if (file.includes('public/data/entries')) {
-    //     const thisModule = server.moduleGraph.getModuleById(
-    //       resolvedVirtualModuleId,
-    //     )
-    //     if (thisModule) return [thisModule]
-    //   }
-    // },
+    handleHotUpdate({ server, file }) {
+      if (file.includes('public/data/entries')) {
+        const thisModule = server.moduleGraph.getModuleById(
+          resolvedVirtualModuleId,
+        )
+        if (thisModule) return [thisModule]
+      }
+    },
   }
 }
