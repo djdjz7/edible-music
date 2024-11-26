@@ -15,11 +15,11 @@ const entries = ref<ListEntry[]>(data);
         class="group">
         <img h-24 w-24 :src="entry.cover" shadow-lg group-hover:shadow-xl group-hover:translate-y--.5 transition-all
           duration-200 block>
-        <div m-l-8 flex="~ col" text-black>
+        <div m-l-8 flex="~ col" text-black style="max-width: calc(100% - 8rem);">
           <span text-xs font-semibold text-gray-500 tracking-wide>{{ entry.vol }} · {{ entry.date }}</span>
           <span text-xl font-semibold>{{ entry.title }}</span>
-          <span text-sm text-gray-500>{{ entry.album }}</span>
-          <span text-sm text-gray-500>{{ entry.artist }}</span>
+          <span text-sm text-gray-500 truncate>{{ entry.album }}</span>
+          <span text-sm text-gray-500 truncate>{{ entry.artist }}</span>
         </div>
       </a>
     </div>
